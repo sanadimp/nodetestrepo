@@ -1,7 +1,7 @@
-name: Test_workflow
+name: Deploy 
 on: push
 jobs:
- Cloning_the_repo:
+ Testing:
   runs-on: ubuntu-latest
   steps:
      - name: Cloning_github_repo
@@ -16,3 +16,19 @@ jobs:
             npm ci
      - name: Run npm tests
        run: npm test
+ Deployment:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Cloning_github_repo
+       uses: actions/checkout@v4
+     - name: Install node
+       uses: actions/setup-node@v4
+       with:
+        node-version: 18
+     - name: Install node modules
+       run: 
+            npm ci
+     - name: Build the project
+       run: npm run build
+     - name: Deplpy Project
+       run: echo "Deplpying the project"
