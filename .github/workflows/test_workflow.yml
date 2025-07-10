@@ -17,6 +17,7 @@ jobs:
      - name: Run npm tests
        run: npm test
  Deployment:
+   needs: Testing
    runs-on: ubuntu-latest
    steps:
      - name: Cloning_github_repo
